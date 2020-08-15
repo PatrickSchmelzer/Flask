@@ -3,3 +3,5 @@
 ################################################################################
 
 /flask-getting-started
+/__pycache__
+/.vs/VSWorkspaceState.json
