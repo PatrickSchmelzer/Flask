@@ -1,0 +1,16 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Task{% endblock %}
+
+{% block content %}
+<h1>Task</h1>
+Titel: {{task.titel}} <br />
+Contact: {{task.contact}} <br />
+Description: {{task.description}} <br />
+                                  <br />
+<a href="{{ url_for('removeTask', index=index) }}">Remove this task</a> <br /> <br />
+<a href="{{ url_for('home')}}">Back to Task List</a>
+{% endblock %}
+
+
+

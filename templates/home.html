@@ -1,0 +1,19 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Tasklist{% endblock %}
+
+{% block content %}
+<h1>PSH Custom Tasklist</h1>
+
+<h2>Open Tasks</h2>
+<ul>
+    {% for task in tasks %}
+    <li>
+        <a href="{{ url_for('taskView', index=loop.index0) }}">
+            {{ task.titel }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('addTask') }}">Add a new task</a>
+{% endblock %}

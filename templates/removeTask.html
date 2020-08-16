@@ -1,0 +1,16 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Remove Task{% endblock %}
+
+{% block content %}
+<h1>Remove Flash Card</h1>
+    Titel: {{ task.titel }} <br>
+    Contact:   {{ task.concact }} <br>
+    Description: {{task.description}}<br><br>
+
+<h2>Are you sure?</h2>
+<form method="post">
+    <button type="submit">Yes</button>
+    <a href="{{ url_for('home') }}">No</a>
+</form>
+{% endblock %}
