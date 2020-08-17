@@ -1,0 +1,15 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Update Task{% endblock %}
+
+{% block content %}
+<h1>Update current task</h1>
+<form method="post">
+    <p> Titel: </p>  <input type="text" name="titel" size="50" value="{{task.titel}}">
+    <p> Contact: </p> <input type="text" name="contact" size="50" value="{{task.contact}}">
+    <p> Description: </p> <textarea name="description" cols="60" rows="6"> {{task.description}}</textarea>  </p>
+    <button type="submit">Update</button>
+</form>
+<br />
+<a href="{{ url_for('home')}}">Back to Task List</a>
+{% endblock %}

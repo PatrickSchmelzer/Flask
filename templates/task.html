@@ -8,6 +8,11 @@ Titel: {{task.titel}} <br />
 Contact: {{task.contact}} <br />
 Description: {{task.description}} <br />
                                   <br />
+
+<form action="{{ url_for('updateTask', index=index) }}">
+    <input type="submit" value="Update task" />
+</form> <br />
+
 <form action="{{ url_for('removeTask', index=index) }}">
     <input type="submit" value="Remove task" />
 </form> <br /> <br />

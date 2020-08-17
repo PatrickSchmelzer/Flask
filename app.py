@@ -35,6 +35,17 @@ def addTask():
         # GET
         return flask.render_template("addTask.html")
 
+@app.route("/updateTask/<int:index>", methods=["GET", "POST"])
+def updateTask(index):
+    if flask.request.method == "POST":
+        task = {"titel": flask.request.form['titel'], "contact": flask.request.form['contact'], "description": flask.request.form['description']}
+        model.db[index] = task;
+        model.save_db()
+        return flask.redirect(flask.url_for('taskView', index=index))
+    else:
+        # GET
+        return flask.render_template("updateTask.html", task=model.db[index])
+
 @app.route('/removeTask/<int:index>', methods=["GET", "POST"])
 def removeTask(index):
     try:
