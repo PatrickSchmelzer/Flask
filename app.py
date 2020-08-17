@@ -2,8 +2,10 @@ import flask
 import model
 import os
 import requests
+import sys
 
-UPLOAD_FOLDER = './logs'
+absolutePath = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLDER = absolutePath + "\logs"
 
 app = flask.Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -60,25 +62,32 @@ def allowedFile(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route('/uploads/<filename>')
-def uploaded_file(filename):
+#@app.route('/uploads/<filename>')
+#def uploaded_file(filename):
+#    return flask.Response(status=200) 
+#    #return flask.send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+
+#@app.route('/logfile/upload', methods=["POST"])
+#def postLogFile():
+#    # check if the post request has the file part
+#    #if 'file' not in flask.request.files:
+#    #    #flash('No file part')
+#    #    return flask.redirect(request.url)
+#    #file = flask.request.files['file']
+#    ## if user does not select file, browser also
+#    ## submit an empty part without filename
+#    #if file.filename == '':
+#    #    #return flask.redirect(request.url)
+#    logging.warning("See this message in Flask Debug Toolbar!")
+#    if file and allowedFile(file.filename):
+#        filename = flask.secure_filename(file.filename)
+#        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+#        return flask.redirect(url_for('uploaded_file', filename=filename))
+
+@app.route("/upload", methods=['POST'])
+def upload_file():
+    print('This is error output', file=sys.stderr)
+    print('This is standard output', file=sys.stdout)
+    from werkzeug.datastructures import FileStorage
+    FileStorage(request.stream).save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     return flask.Response(status=200) 
-    #return flask.send_from_directory(app.config['UPLOAD_FOLDER'], filename)
-
-@app.route('/logfile/upload', methods=["POST"])
-def postLogFile():
-    # check if the post request has the file part
-    #if 'file' not in flask.request.files:
-    #    #flash('No file part')
-    #    return flask.redirect(request.url)
-    #file = flask.request.files['file']
-    ## if user does not select file, browser also
-    ## submit an empty part without filename
-    #if file.filename == '':
-    #    #return flask.redirect(request.url)
-    logging.warning("See this message in Flask Debug Toolbar!")
-    if file and allowedFile(file.filename):
-        filename = flask.secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        return flask.redirect(url_for('uploaded_file', filename=filename))
-

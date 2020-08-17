@@ -8,7 +8,10 @@ Titel: {{task.titel}} <br />
 Contact: {{task.contact}} <br />
 Description: {{task.description}} <br />
                                   <br />
-<a href="{{ url_for('removeTask', index=index) }}">Remove this task</a> <br /> <br />
+<form action="{{ url_for('removeTask', index=index) }}">
+    <input type="submit" value="Remove task" />
+</form> <br /> <br />
+
 <a href="{{ url_for('home')}}">Back to Task List</a>
 {% endblock %}
 
