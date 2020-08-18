@@ -11,5 +11,7 @@
     <button type="submit">Update</button>
 </form>
 <br />
-<a href="{{ url_for('home')}}">Back to Task List</a>
+<form action="{{ url_for('home') }}">
+    <input type="submit" value="Back to Task List" />
+</form>
 {% endblock %}

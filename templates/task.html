@@ -4,21 +4,28 @@
 
 {% block content %}
 <h1>Task</h1>
-Titel: {{task.titel}} <br />
-Contact: {{task.contact}} <br />
-Description: {{task.description}} <br />
-                                  <br />
+Titel: {{task.titel}}
+<br />
+Contact: {{task.contact}}
+<br />
+Description: {{task.description}}
+<br />
+<br />
 
-<form action="{{ url_for('updateTask', index=index) }}">
-    <input type="submit" value="Update task" />
-</form> <br />
+<div class="container">
+    <form action="{{ url_for('updateTask', index=index) }}" style="width:100px; display:inline-block;">
+        <input type="submit" value="Update task" />
+    </form> 
 
-<form action="{{ url_for('removeTask', index=index) }}">
-    <input type="submit" value="Remove task" />
-</form> <br /> <br />
+    <form action="{{ url_for('removeTask', index=index) }}" style="width:100px; display:inline-block;">
+        <input type="submit" value="Remove task" />
+    </form> <br /> <br />
 
-<a href="{{ url_for('home')}}">Back to Task List</a>
-{% endblock %}
+    <form action="{{ url_for('home') }} " style="width:100px; display:inline-block;">
+        <input type="submit" value="Back to Task List" />
+    </form>
+</div>
+    {% endblock %}
 
 
 
