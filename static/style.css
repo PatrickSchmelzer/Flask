@@ -3,3 +3,7 @@ body {
     color: black;
     background-color: lightgray;
 }
+
+li {
+    margin: 8px 0;
+}
