@@ -5,7 +5,7 @@ import sys
 db = []
 
 def openConnection():
-    database = r"C:\98_GitRepo\Flask\taskListDB.b.db"
+    database = r"C:\98_GitRepo\Flask\taskListDataBase.db"
     connection = None
     try:
         connection = sqlite3.connect(database)
@@ -21,14 +21,14 @@ def load_db():
     global db
     connection = openConnection()
     cursor = connection.cursor()
-    cursor.execute("SELECT * from tasks")
+    cursor.execute("SELECT * from Tasks")
     db = []
     while True:
         row = cursor.fetchone()
         if row == None:
             break;
-        print(row[0], row[1], row[2], file=sys.stdout)
-        task = {"titel": row[0], "contact": row[1], "description": row[2]}
+        print(row[0], row[1], row[2], row[3], row[4], file=sys.stdout)
+        task = {"id": row[0], "titel": row[1], "contact": row[2], "description": row[3], "priorityId": row[4]}
         db.append(task)
     closeConnection(connection)
 
@@ -36,8 +36,8 @@ def insertTask(task):
     global db
     connection = openConnection()
     cursor = connection.cursor()
-    sql = "INSERT INTO Tasks VALUES(?,?,?)"
-    cursor.execute(sql, (task['titel'], task['contact'], task['description']))
+    sql = "INSERT INTO Tasks(titel, contact, description, priorityId) VALUES(?,?,?,?)"
+    cursor.execute(sql, (task['titel'], task['contact'], task['description'], len(db)))
     closeConnection(connection)
     db.clear()
     load_db()
@@ -47,8 +47,19 @@ def deleteTask(index):
     taskToDelete = db[index]
     connection = openConnection()
     cursor = connection.cursor()
-    sql = 'DELETE FROM tasks WHERE task_titel=?'
-    cursor.execute(sql, (taskToDelete['titel'],))
+    sql = 'DELETE FROM tasks WHERE id=?'
+    cursor.execute(sql, (taskToDelete['id'],))
+    closeConnection(connection)
+    db.clear()
+    load_db()
+
+def updateTask(task, id):
+    global db
+    connection = openConnection()
+    cursor = connection.cursor()
+    sql = 'UPDATE tasks SET titel = ?, contact = ?, description = ? WHERE id = ?'
+    print(task, file=sys.stdout)
+    cursor.execute(sql, (task['titel'], task['contact'], task['description'], id))
     closeConnection(connection)
     db.clear()
     load_db()

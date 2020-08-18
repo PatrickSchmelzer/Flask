@@ -38,8 +38,7 @@ def addTask():
 def updateTask(index):
     if flask.request.method == "POST":
         task = {"titel": flask.request.form['titel'], "contact": flask.request.form['contact'], "description": flask.request.form['description']}
-        model.deleteTask(index)
-        model.insertTask(task)
+        model.updateTask(task, model.db[index]['id'])
         return flask.redirect(flask.url_for('taskView', index=index))
     else:
         # GET
