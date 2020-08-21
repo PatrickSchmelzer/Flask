@@ -19,4 +19,49 @@
 <form action="{{ url_for('addTask') }}">
     <input type="submit" value="Add a new task" />
 </form>
+
+
+<h2>Covid Update</h2>
+<table>
+    <tr>
+        <th>Country</th>
+        <th>NewCases</th>
+        <th>Cases/100'000</th>
+    </tr>
+    <tr>
+        <td>World</td>
+        <td>{{covidData.World.NewConfirmed}}</td>
+    </tr>
+    <tr>
+        <td>Italy</td>
+        <td>{{covidData.Italy.NewConfirmed}}</td>
+        <td><script>document.write(({{ covidData.Italy.NewConfirmed }} / {{inhabitants.Italy}} * 100000).toFixed(2))</script></td>
+    </tr>
+    <tr>
+        <td>Germany</td>
+        <td>{{covidData.Germany.NewConfirmed}}</td>
+        <td>
+        <script>document.write(({{ covidData.Germany.NewConfirmed }} / {{inhabitants.Germany}} * 100000).toFixed(2))</script></td>
+    </tr>
+    <tr>
+        <td>Switzerland</td>
+        <td>{{covidData.Switzerland.NewConfirmed}}</td>
+        <td>
+        <script>document.write(({{ covidData.Switzerland.NewConfirmed }} / {{inhabitants.Switzerland}} * 100000).toFixed(2))</script></td>
+    </tr>
+    <tr>
+        <td>Spain</td>
+        <td>{{covidData.Spain.NewConfirmed}}</td>
+        <td><script>document.write(({{ covidData.Spain.NewConfirmed }} / {{inhabitants.Spain}} * 100000).toFixed(2))</script></td>
+    </tr>
+    <tr>
+        <td>France</td>
+        <td>{{covidData.France.NewConfirmed}}</td>
+        <td><script>document.write(({{ covidData.France.NewConfirmed }} / {{inhabitants.France}} * 100000).toFixed(2))</script></td>
+    </tr>
+</table>
+
+</body>
+</html>
+
 {% endblock %}

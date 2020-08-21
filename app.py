@@ -3,6 +3,7 @@ import model
 import os
 import requests
 import sys
+import covidData
 
 absolutePath = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = absolutePath + "\logs"
@@ -13,7 +14,7 @@ ALLOWED_EXTENSIONS = set(['txt', 'log'])
 
 @app.route("/")
 def home():
-    return flask.render_template("home.html", tasks=model.db)
+    return flask.render_template("home.html", tasks=model.db, covidData=covidData.getCovidData(), inhabitants=covidData.getInhabitants())
 
 @app.route("/taskView/<int:index>")
 def taskView(index):
