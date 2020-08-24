@@ -21,21 +21,16 @@
 </table>
 
 <div class="container">
-    <div class="button">
-        <form action="{{ url_for('updateTask', index=index) }}" style="width:100px; display:inline-block;">
-            <input type="submit" value="Update task" />
-        </form>
-    </div>
-    <form action="{{ url_for('updateTask', index=index) }}" style="width:100px; display:inline-block;">
-        <input type="submit" value="Update task" />
+    <form action="{{ url_for('updateTask', index=index) }}" style="width:200px; display:inline-block;">
+        <input type="submit" value="Update task" class="button"/>
     </form>
 
-    <form action="{{ url_for('removeTask', index=index) }}" style="width:100px; display:inline-block;">
-        <input type="submit" value="Remove task" />
+    <form action="{{ url_for('removeTask', index=index) }}" style="width:200px; display:inline-block;">
+        <input type="submit" value="Remove task" class="button" />
     </form> <br /> <br />
 
-    <form action="{{ url_for('home') }} " style="width:100px; display:inline-block;">
-        <input type="submit" value="Back to Task List" />
+    <form action="{{ url_for('home') }} " style="width:200px; display:inline-block;">
+        <input type="submit" value="Back to Task List" class="button"/>
     </form>
 </div>
     {% endblock %}
