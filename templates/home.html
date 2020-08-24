@@ -12,7 +12,7 @@
         </tr>
         {% for task in tasks %}
         <tr>
-            <td onclick="location.href={{ url_for('taskView', index=loop.index0) }}"><a href={{ url_for('taskView', index=loop.index0) }}>{{task.titel}}</a></td>
+            <td> <a href={{ url_for('taskView', index=loop.index0) }}>{{task.titel}}</a></td>
         </tr>
         {% endfor %}
         <tr>
