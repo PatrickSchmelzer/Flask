@@ -5,7 +5,6 @@
 {% block content %}
 <h1>PSH Webpage</h1>
 
-<h2>Tasks</h2>
 <div style="float: left;margin-right:50px">
     <table>
         <tr>
@@ -15,13 +14,13 @@
         <tr>
             <td onclick="location.href={{ url_for('taskView', index=loop.index0) }}"><a href={{ url_for('taskView', index=loop.index0) }}>{{task.titel}}</a></td>
         </tr>
-        {% endfor %}-->
-        <form action="{{ url_for('addTask') }}">
-            <input type="submit" value="Add a new task" />
-        </form>
+        {% endfor %}
+        <tr>
+            <td style="font-size:0.8em;" click="location.href={{ url_for('addTask') }}"><a href={{ url_for('addTask') }}>Add new task</a></td> </td>
+        </tr>
     </table>
 </div>
-<h2>Covid Update</h2>
+
 <div style="float: left">
     <table>
         <tr>
@@ -32,6 +31,7 @@
         <tr>
             <td>World</td>
             <td>{{covidData.World.NewConfirmed}}</td>
+            <td>-</td>
         </tr>
         <tr>
             <td>Italy</td>
