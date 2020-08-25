@@ -19,6 +19,9 @@ def getInhabitants():
     inhabitants["Germany"] = 83166711
     inhabitants["Spain"] = 47100396
     inhabitants["France"] = 66993000
+    inhabitants["UK"] = 66435550
+    inhabitants["USA"] = 328000000
+
     return inhabitants
 
 def getCovidData():
@@ -31,7 +34,14 @@ def getCovidData():
     
     entryCountries = entries["Countries"]
     for entry in entryCountries:
-        data[entry["Country"]] = {"NewConfirmed": entry["NewConfirmed"], "NewDeaths": entry["NewDeaths"], "NewRecovered": entry["NewRecovered"], 
+        if entry['Country'] == "United Kingdom":
+            data["UK"] = {"NewConfirmed": entry["NewConfirmed"], "NewDeaths": entry["NewDeaths"], "NewRecovered": entry["NewRecovered"], 
+                  "TotalConfirmed": entry["TotalConfirmed"], "TotalDeaths": entry["TotalDeaths"], "TotalRecovered": entry["TotalRecovered"]}
+        elif entry['Country'] == "United States of America":
+            data["USA"] = {"NewConfirmed": entry["NewConfirmed"], "NewDeaths": entry["NewDeaths"], "NewRecovered": entry["NewRecovered"], 
+                  "TotalConfirmed": entry["TotalConfirmed"], "TotalDeaths": entry["TotalDeaths"], "TotalRecovered": entry["TotalRecovered"]}
+        else:
+            data[entry["Country"]] = {"NewConfirmed": entry["NewConfirmed"], "NewDeaths": entry["NewDeaths"], "NewRecovered": entry["NewRecovered"], 
                   "TotalConfirmed": entry["TotalConfirmed"], "TotalDeaths": entry["TotalDeaths"], "TotalRecovered": entry["TotalRecovered"]}
     
     #msg = "New Covid Data for today\n\n"

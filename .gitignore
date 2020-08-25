@@ -5,3 +5,5 @@
 /flask-getting-started
 /__pycache__
 /.vs
+/env/Lib/site-packages
+/env/Scripts

@@ -3,7 +3,9 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<h1>PSH Webpage</h1>
+<p align="right">
+    <td><a href={{ url_for('logout') }} class="button">Logout</a></td>
+</p>
 
 <div style="float: left;margin-right:50px">
     <table>
@@ -12,11 +14,11 @@
         </tr>
         {% for task in tasks %}
         <tr>
-            <td> <a href={{ url_for('taskView', index=loop.index0) }}>{{task.titel}}</a></td>
+            <td> <a class="button" href={{ url_for('taskView', index=loop.index0) }}>{{task.titel}}</a></td>
         </tr>
         {% endfor %}
         <tr>
-            <td><a href={{ url_for('addTask') }} class="button">AddTask</a></td>
+            <td><a href={{ url_for('addTask') }} class="btn">AddTask</a></td>
         </tr>
     </table>
 </div>
@@ -68,9 +70,29 @@
                 <script>document.write(({{ covidData.France.NewConfirmed }} / {{inhabitants.France}} * 100000).toFixed(2))</script>
             </td>
         </tr>
+        <tr>
+            <td>UK</td>
+            <td>{{covidData.UK.NewConfirmed}}</td>
+            <td>
+                <script>document.write(({{ covidData.UK.NewConfirmed }} / {{inhabitants.UK}} * 100000).toFixed(2))</script>
+            </td>
+        </tr>
+        <tr>
+            <td>USA</td>
+            <td>{{covidData.USA.NewConfirmed}}</td>
+            <td>
+                <script>document.write(({{ covidData.USA.NewConfirmed }} / {{inhabitants.USA}} * 100000).toFixed(2))</script>
+            </td>
+        </tr>
     </table>
 </div>
 
-
-
+<img src="/plot.png" alt="CovidPlot>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+ {% for message in messages %}
+{{ message }}
+ {% endfor %}
+{% endif %}
+{% endwith %}
 {% endblock %}

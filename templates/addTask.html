@@ -3,29 +3,33 @@
 {% block title %}New Task{% endblock %}
 
 {% block content %}
-<h1>Add a new task</h1>
+
+<p align="right">
+    <a href={{ url_for('home') }} class="button">Home</a>
+    <a href={{ url_for('logout') }} class="button">Logout</a>
+</p>
+
 <form method="post">
     <table>
         <tr>
+            <th colspan="2">Add new task</th>
+        </tr>
+        <tr>
             <th>Titel</th>
-            <td><input type="text" name="titel" size="50"/></td>
+            <td><textarea name="titel" cols="60" rows="1"></textarea></td>
         </tr>
         <tr>
             <th>Contact</th>
-            <
-            <td><input type="text" name="contact" size="50"/></td>
+            <td><textarea name="contact" cols="10" rows="1"></textarea></td>
         </tr>
         <tr>
             <th>Description</th>
-            <td></p> <textarea name="description" cols="60" rows="6"></textarea></td>
+            <td><textarea name="description" cols="60" rows="6"></textarea></td>
         </tr>
         <tr>
-            <th colspan="2"> <button class="button" type="submit">Add Task</button></th>
+            <th colspan="2"> <button class="btn" type="submit">Add Task</button></th>
         </tr>
     </table>
 </form>
 <br />
-<form action="{{ url_for('home') }}">
-    <input type="submit" value="Home" class="button" />
-</form>
 {% endblock %}

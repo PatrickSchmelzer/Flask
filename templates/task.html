@@ -3,7 +3,11 @@
 {% block title %}TaskView{% endblock %}
 
 {% block content %}
-<h1>TaskView</h1>
+<p align="right">
+    <a href={{ url_for('home') }} class="button">Home</a>
+    <a href={{ url_for('logout') }} class="button">Logout</a>
+</p>
+
 <table>
     <tr>
         <th>Titel</th>
@@ -19,20 +23,12 @@
     </tr>
 </table>
 
-<div class="container">
-    <form action="{{ url_for('updateTask', index=index) }}" style="width:200px; display:inline-block;">
-        <input type="submit" value="Update task" class="button"/>
-    </form>
+<p align="left">
+    <a href={{ url_for('updateTask', index=index) }} class="button">Update task</a>
+    <a href={{  url_for('removeTask', index=index)}} class="button">Remove task</a>
+</p>
 
-    <form action="{{ url_for('removeTask', index=index) }}" style="width:200px; display:inline-block;">
-        <input type="submit" value="Remove task" class="button" />
-    </form> <br /> <br />
-
-    <form action="{{ url_for('home') }} " style="width:200px; display:inline-block;">
-        <input type="submit" value="Back to Task List" class="button"/>
-    </form>
-</div>
-    {% endblock %}
+{% endblock %}
 
 
 

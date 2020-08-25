@@ -5,7 +5,7 @@ import sys
 db = []
 
 def openConnection():
-    database = r"C:\98_GitRepo\Flask\taskListDataBase.db"
+    database = r"C:\98_GitRepo\Flask\DataBase.db"
     connection = None
     try:
         connection = sqlite3.connect(database)
@@ -17,7 +17,7 @@ def closeConnection(connection):
     connection.commit()
     connection.close()
 
-def load_db():
+def loadTasks():
     global db
     connection = openConnection()
     cursor = connection.cursor()
@@ -40,7 +40,7 @@ def insertTask(task):
     cursor.execute(sql, (task['titel'], task['contact'], task['description'], len(db)))
     closeConnection(connection)
     db.clear()
-    load_db()
+    loadTasks()
 
 def deleteTask(index):
     global db
@@ -51,7 +51,7 @@ def deleteTask(index):
     cursor.execute(sql, (taskToDelete['id'],))
     closeConnection(connection)
     db.clear()
-    load_db()
+    loadTasks()
 
 def updateTask(task, id):
     global db
@@ -62,6 +62,6 @@ def updateTask(task, id):
     cursor.execute(sql, (task['titel'], task['contact'], task['description'], id))
     closeConnection(connection)
     db.clear()
-    load_db()
+    loadTasks()
 
-load_db()
+loadTasks()
