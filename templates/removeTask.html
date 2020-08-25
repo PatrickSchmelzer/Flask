@@ -3,14 +3,24 @@
 {% block title %}Remove Task{% endblock %}
 
 {% block content %}
-<h1>Remove Flash Card</h1>
-    Titel: {{ task.titel }} <br>
-    Contact:   {{ task.concact }} <br>
-    Description: {{task.description}}<br><br>
+<table>
+    <tr>
+        <th>Titel</th>
+        <td>{{task.titel}}</td>
+    </tr>
+    <tr>
+        <th>Contact</th>
+        <td>{{task.contact}}</td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td>{{task.description}}</td>
+    </tr>
+</table>
 
 <h2>Are you sure?</h2>
 <form method="post">
-    <button type="submit">Yes</button>
-    <a href="{{ url_for('home') }}">No</a>
+    <button class="button" type="submit">Yes</button>
+    <a href="{{ url_for('home') }}" class="button">No</a>
 </form>
 {% endblock %}

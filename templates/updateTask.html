@@ -5,13 +5,26 @@
 {% block content %}
 <h1>Update current task</h1>
 <form method="post">
-    <p> Titel: </p>  <input type="text" name="titel" size="50" value="{{task.titel}}">
-    <p> Contact: </p> <input type="text" name="contact" size="50" value="{{task.contact}}">
-    <p> Description: </p> <textarea name="description" cols="60" rows="6"> {{task.description}}</textarea>  </p>
-    <button type="submit">Update</button>
+    <table>
+        <tr>
+            <th>Titel</th>
+            <td><input type="text" name="titel" size="50" value="{{task.titel}}"/></td>
+        </tr>
+        <tr>
+            <th>Contact</th>
+            <<td><input type="text" name="contact" size="50" value="{{task.contact}}"/></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td></p> <textarea name="description" cols="60" rows="6"> {{task.description}}</textarea></td>
+        </tr>
+        <tr>
+            <th colspan="2"> <button class="button" type="submit">Update</button></th>
+        </tr>
+    </table>
 </form>
 <br />
 <form action="{{ url_for('home') }}">
-    <input type="submit" value="Back to Task List" />
+    <input type="submit" value="Home" class="button" />
 </form>
 {% endblock %}
