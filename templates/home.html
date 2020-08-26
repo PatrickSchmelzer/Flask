@@ -36,49 +36,49 @@
             <td>-</td>
         </tr>
         <tr>
-            <td>Italy</td>
+            <td><a href={{ url_for('plot', country="Italy") }} </a> Italy</td>
             <td>{{covidData.Italy.NewConfirmed}}</td>
             <td>
                 <script>document.write(({{ covidData.Italy.NewConfirmed }} / {{inhabitants.Italy}} * 100000).toFixed(2))</script>
             </td>
         </tr>
         <tr>
-            <td>Germany</td>
+            <td><a href={{ url_for('plot', country="Germany") }} </a> Germany</td>
             <td>{{covidData.Germany.NewConfirmed}}</td>
             <td>
                 <script>document.write(({{ covidData.Germany.NewConfirmed }} / {{inhabitants.Germany}} * 100000).toFixed(2))</script>
             </td>
         </tr>
         <tr>
-            <td>Switzerland</td>
+            <td><a href={{ url_for('plot', country="Switzerland") }} </a> Switzerland</td>
             <td>{{covidData.Switzerland.NewConfirmed}}</td>
             <td>
                 <script>document.write(({{ covidData.Switzerland.NewConfirmed }} / {{inhabitants.Switzerland}} * 100000).toFixed(2))</script>
             </td>
         </tr>
         <tr>
-            <td>Spain</td>
+            <td><a href={{ url_for('plot', country="Spain") }} </a> Spain</td>
             <td>{{covidData.Spain.NewConfirmed}}</td>
             <td>
                 <script>document.write(({{ covidData.Spain.NewConfirmed }} / {{inhabitants.Spain}} * 100000).toFixed(2))</script>
             </td>
         </tr>
         <tr>
-            <td>France</td>
+            <td><a href={{ url_for('plot', country="France") }} </a> France</td>
             <td>{{covidData.France.NewConfirmed}}</td>
             <td>
                 <script>document.write(({{ covidData.France.NewConfirmed }} / {{inhabitants.France}} * 100000).toFixed(2))</script>
             </td>
         </tr>
         <tr>
-            <td>UK</td>
+            <td><a href={{ url_for('plot', country="United Kingdom") }} </a> United Kingdom</td>
             <td>{{covidData.UK.NewConfirmed}}</td>
             <td>
                 <script>document.write(({{ covidData.UK.NewConfirmed }} / {{inhabitants.UK}} * 100000).toFixed(2))</script>
             </td>
         </tr>
         <tr>
-            <td>USA</td>
+            <td><a href={{ url_for('plot', country="United States of America") }} </a> United States of America</td>
             <td>{{covidData.USA.NewConfirmed}}</td>
             <td>
                 <script>document.write(({{ covidData.USA.NewConfirmed }} / {{inhabitants.USA}} * 100000).toFixed(2))</script>
@@ -87,12 +87,11 @@
     </table>
 </div>
 
-<img src="/plot.png" alt="CovidPlot>
-{% with messages = get_flashed_messages() %}
+<!--{% with messages = get_flashed_messages() %}
 {% if messages %}
  {% for message in messages %}
 {{ message }}
  {% endfor %}
 {% endif %}
-{% endwith %}
+{% endwith %}-->
 {% endblock %}

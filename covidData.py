@@ -1,10 +1,6 @@
 import datetime
 import requests
-#import dateutil.parser
 import pprint
-#import matplotlib.pyplot as plt
-#import matplotlib.dates as mdates
-#import numpy as np
 
 INHABITANTS_ITALY_FACTOR = 100000 / 60260229
 INHABITANTS_SWITZERLAND_FACTOR = 100000 / 8603900
@@ -52,3 +48,22 @@ def getCovidData():
     #msg += "New Cases Spain: " + str(data["Spain"]["NewConfirmed"]) + ", Cases/100'000: "+ str(round(data["Spain"]["NewConfirmed"] * INHABITANTS_SPAIN_FACTOR,2)) + "\n"
     #msg += "New Cases France: " + str(data["France"]["NewConfirmed"]) + ", Cases/100'000: "+ str(round(data["France"]["NewConfirmed"] * INHABITANTS_FRANCE_FACTOR,2)) + "\n"
     return data
+
+def getDataPerCountry(country):
+    country.replace(" ", "%20")
+    url= f"https://api.covid19api.com/country/{country}/status/confirmed"
+    days = requests.get(url).json()
+    cases = []
+    casesPerDay = []
+    date = []
+    for idx in range(0, len(days)):
+        day = days[idx]
+        cases.append(day['Cases'])
+        date.append(day['Date'])
+        if idx == 0:
+            casesPerDay.append(day['Cases'])
+        else:
+            prevDay = days[idx-1]
+            casesPerDay.append(day['Cases'] - prevDay['Cases'])
+
+    return casesPerDay, date, url
